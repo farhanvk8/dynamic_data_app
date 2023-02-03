@@ -15,8 +15,6 @@ class DataGridPage extends StatelessWidget {
         child: Consumer(builder: (context, ref, _) {
           final dataState = ref.watch(dataStateProvider);
           var columns = ref.watch(columnProvider);
-          var titleKey = ref.watch(titleKeyProvider);
-          var subtitleKey = ref.watch(subTitleKeyProvider);
 
           return dataState.when(
             initial: () => InitialPage(),
@@ -31,6 +29,8 @@ class DataGridPage extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back_ios)),
               ),
               body: LayoutBuilder(builder: (context, constraints) {
+                var titleKey = ref.watch(titleKeyProvider);
+                var subtitleKey = ref.watch(subTitleKeyProvider);
                 if (constraints.maxWidth < 600) {
                   return OrientationBuilder(builder: (context, orientation) {
                     if (orientation == Orientation.portrait) {
