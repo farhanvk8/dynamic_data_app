@@ -24,6 +24,7 @@ class InitialPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                decoration: const InputDecoration(label: Text('URL')),
                 controller: urlController,
               ),
               const SizedBox(
