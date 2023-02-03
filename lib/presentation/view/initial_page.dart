@@ -58,10 +58,17 @@ class InitialPage extends StatelessWidget {
                       ),
                       trailing: IconButton(
                           onPressed: () {
-                            columns.remove(columns[index]);
-                            ref.read(columnProvider.notifier).state = [
-                              ...columns
-                            ];
+                            if (columns.length > 2) {
+                              columns.remove(columns[index]);
+                              ref.read(columnProvider.notifier).state = [
+                                ...columns
+                              ];
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'Minimum 2 fields are required')));
+                            }
                           },
                           icon: const Icon(
                             Icons.delete,
